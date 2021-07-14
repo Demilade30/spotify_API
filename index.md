@@ -42,4 +42,4 @@ For more details see [SEO Tech Deveoloper](https://www.seo-usa.org/career/tech/)
 * Divine Demilade Akinjiyan
 * Junior, Double majoring in Math and Computer Science
 * [LinkedIn](https://www.linkedin.com/in/divine-akinjiyan/).
-* [Github](https://github.com/Demilade30) or [Email](divine.akinjiyan@gmail.com).
+* [Github](https://github.com/Demilade30) or [Email](mailto:divine.akinjiyan@gmail.com).
