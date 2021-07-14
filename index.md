@@ -1,37 +1,212 @@
-## Welcome to GitHub Pages
+## Working with Spotify API
 
-You can use the [editor on GitHub](https://github.com/Demilade30/spotify_API/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+*This code retrieves album information from Spotify*
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+This project highlights the use of APIs, SDKs, and Libraries
 
-### Markdown
+Whenever you run this code with required input, album/ track information is outputted from [Spotify API](https://developer.spotify.com/)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### How does it work?
+
+User inputs the album/ track information and they are able to see specific information about the song/ list of songs.
 
 ```markdown
-Syntax highlighted code block
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import requests\n",
+    "import spotipy"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "clientId = 'faeecd78395c4018a27b724b85c94c9f'\n",
+    "clientSecret = 'eb655fc8edaa463a8f4f9fd464e4641e'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "authUrl = 'https://accounts.spotify.com/api/token'\n",
+    "auth_response = requests.post(authUrl, {\n",
+    "    'grant_type' : 'client_credentials',\n",
+    "    'client_id' : clientId,\n",
+    "    'client_secret' : clientSecret,\n",
+    "})"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "200\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(auth_response.status_code)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "auth_responseData = auth_response.json()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'access_token': 'BQC2HKPm1t4hKvMrH3B78NJVe5Hv0ZAkBnTvAKjnzyUdAT4SPMmXyS-EQeOS5VPrc2gjIcwtLijDsiw7vVs',\n",
+       " 'expires_in': 3600,\n",
+       " 'token_type': 'Bearer'}"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "auth_responseData"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "accessToken = auth_responseData"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "headers = {\n",
+    "    'Authorization': 'Bearer {token}'.format(token=accessToken)\n",
+    "}"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "baseUrl = 'https://api.spotify.com/v1/'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "trackId = '6mFkJmJqdDVQ1REhVfGgd1'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "r = requests.get(baseUrl + 'audio-features/' + trackId, headers=headers)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
+Elon Musk:
+> "When something is important enough, you do it even if the odds are not in your favor."
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+# Installation
+* Runs on python 2.7>
+* Run command "sudo pip3 install spotipy" to begin
 
-### Jekyll Themes
+## Contributors
+[Click here to learn more](https://github.com/Demilade30)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Demilade30/spotify_API/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### License
 
-### Support or Contact
+- [GNU GPL](license)
+- ![badge0](https://img.shields.io/static/v1?label=<License>&message=GNU>&color=<BLUE>)
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+### **Special thanks to:**
+1. _Nikhil Yadav_
+2. _Jean Emile Leconte II_
+
+### On behalf of SEO Tech Developer
+
+![https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.seo-usa.org%2Fwp-content%2Fuploads%2F2019%2F01%2Fseo-logo-og.png&imgrefurl=https%3A%2F%2Fwww.seo-usa.org%2F&tbnid=YiZddZtBXxH6AM&vet=12ahUKEwjAiJCP3eLxAhXTbqwKHUKBDk8QMygAegUIARCoAQ..i&docid=JkiQ-7yjC_4A7M&w=1200&h=627&q=seo-usa&ved=2ahUKEwjAiJCP3eLxAhXTbqwKHUKBDk8QMygAegUIARCoAQ](src)
+For more details see [SEO Tech Deveoloper](https://www.seo-usa.org/career/tech/).
+
+# About:
+* Divine Demilade Akinjiyan
+* Junior, Double majoring in Math and Computer Science
+* [LinkedIn](https://www.linkedin.com/in/divine-akinjiyan/).
+* [Github](https://github.com/Demilade30) or [Email](divine.akinjiyan@gmail.com).
