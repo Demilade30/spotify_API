@@ -1,8 +1,6 @@
 ## Working with Spotify API
 
-*This code retrieves album information from Spotify*
-
-This project highlights the use of APIs, SDKs, and Libraries
+*This project highlights the use of APIs, SDKs, and Libraries*
 
 Whenever you run this code with required input, album/ track information is outputted from [Spotify API](https://developer.spotify.com/)
 
@@ -19,7 +17,7 @@ User inputs the album/ track information and they are able to see specific infor
   }
 ```
 Elon Musk:
-> "When something is important enough, you do it even if the odds are not in your favor."
+> When something is important enough, you do it even if the odds are not in your favor.
 
 # Installation
 * Runs on python 2.7>
